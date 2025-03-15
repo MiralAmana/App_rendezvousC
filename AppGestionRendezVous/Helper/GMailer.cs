@@ -54,34 +54,7 @@ namespace AppGroupe2.Helper
             }
         }
 
-        public void Send()
-        {
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = GmailHost;
-            smtp.Port = GmailPort;
-            smtp.EnableSsl = GmailSSL;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(GmailUsername, GmailPassword);
-
-            try
-            {
-                using (var message = new MailMessage(GmailUsername, ToEmail))
-                {
-                    message.Subject = Subject;
-                    message.Body = Body;
-                    message.IsBodyHtml = IsHtml;
-                    smtp.Send(message);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log de l'exception ou utilisation de l'objet ex pour afficher l'erreur
-                Console.WriteLine("Erreur lors de l'envoi du mail : " + ex.Message);
-                // Optionnel : vous pouvez aussi logger l'exception dans un fichier de log
-                Utils.WriteLogSystem(ex.ToString(), "GMAILER-Send");
-            }
-        }
+        
 
 
     }
