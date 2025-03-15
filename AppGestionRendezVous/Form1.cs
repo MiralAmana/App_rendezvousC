@@ -41,8 +41,12 @@ namespace AppGestionRendezVous
 
         private void frmConexion_Load(object sender, EventArgs e)
         {
-            Utils.WriteLogSystem("test", "Ceci est est test");
-            GMailer.SenMail("maremekane2216@gmail.com", "test", "un test");
+            GMailer gmailer = new GMailer();
+            gmailer.ToEmail = "destinataire@example.com";
+            gmailer.Subject = "Test";
+            gmailer.Body = "Ceci est un test.";
+            gmailer.IsHtml = false;
+            gmailer.Send();
 
 
         }
